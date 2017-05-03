@@ -6,12 +6,14 @@ tic;
 %% calculation information
 % H2O/6-31G calculaton: # of occ: 4, # of vir: 8
 mol_name = 'h2o';
-bs_name = '6-31G'
+bs_name = '631g';
+tcut = '1e7';
 ndocc = 4;
 nvir = 8;
 
 %% construct PNO coefficients from files
-fprintf('\n constructing PNO coefficients for %s %s\n', mol_name,bs_name);
+fprintf('\n constructing PNO coefficients for %s %s with %s\n', ...
+  mol_name,bs_name,tcut);
 
 Dab_ij = zeros(nvir,nvir,ndocc,ndocc,3);
 Dab_ij_new = zeros(nvir,nvir,ndocc,ndocc,3);
@@ -27,11 +29,12 @@ for iter = 1:3
       f_new_name = strcat(strcat(strcat(strcat(strcat('C_es_', ...
                    int2str(i)),int2str(j)),'_'),int2str(iter-1)),'new.out');
       %fprintf('  reading %10s\n',f_name);
-      Dab = load([strcat(strcat('./',mol_name),'/') f_name]); 
+      path_name = strcat(strcat(strcat(strcat(strcat(strcat('./',mol_name),'/'),'bs_'),bs_name),'_'),tcut);
+      Dab = load([strcat(path_name,'/') f_name]); 
       n_pno(i,j,iter) = size(Dab,2);
       
       %fprintf('  reading %10s\n',f_new_name);
-      Dab_new = load([strcat(strcat('./',mol_name),'/') f_new_name]); 
+      Dab_new = load([strcat(path_name,'/') f_new_name]); 
       n_pno_new(i,j,iter) = size(Dab_new,2);
            
       Dab_ij(:,1:n_pno(i,j,iter),i,j,iter) = Dab;  
@@ -40,8 +43,6 @@ for iter = 1:3
   end
 
 end
-
-toc;
 
 %% compute the subspace between different PNO coefficients
 idx = 1;
