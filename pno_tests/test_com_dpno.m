@@ -57,7 +57,7 @@ if (iter > 1)
       Dab_1 = reshape(Dab_ij(:,:,i,j,iter),nvir,nvir);
       Dab_2 = reshape(Dab_ij_new(:,:,i,j,iter-1),nvir,nvir);
       fprintf('  for ij (%d,%d) pair, rank: %d vs. %d, theta = %f\n',i,j, ...
-        n_pno_1,n_pno_2,subspace(Dab_1(:,1:n_pno_1),Dab_2(:,1:n_pno_2)));
+        n_pno_2,n_pno_1,subspace(Dab_1(:,1:n_pno_1),Dab_2(:,1:n_pno_2)));
     end
   end
   idx = idx+1;
