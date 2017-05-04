@@ -4,12 +4,15 @@
 tic;
 
 %% calculation information
-% H2O/6-31G calculaton: # of occ: 4, # of vir: 8
 mol_name = 'h2o';
-bs_name = '631g';
-tcut = '1e7';
 ndocc = 4;
+tcut = '1e7';
+% H2O/6-31G calculaton: # of occ: 4, # of vir: 8
+bs_name = '631g';
 nvir = 8;
+% H2O/aug-cc-pVDZ calculaton: # of occ: 4, # of vir: 36
+% bs_name = 'augdz';
+% nvir = 36;
 
 %% construct PNO coefficients from files
 fprintf('\n constructing PNO coefficients for %s %s with %s\n', ...
