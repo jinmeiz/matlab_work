@@ -68,7 +68,7 @@ if (iter > 1)
       Dab_1 = reshape(Dab_ij(:,:,i,j,iter),nvir,nvir);
       Dab_2 = reshape(Dab_ij_new(:,:,i,j,iter-1),nvir,nvir);
       theta = subspace(Dab_1(:,1:n_pno_1),Dab_2(:,1:n_pno_2))/pi*180;
-      fprintf('  for ij (%d,%d) pair, rank: %2d vs. %2d, theta = %f\n',i,j, ...
+      fprintf('  for ij (%d,%d) pair, rank: %2d vs. %2d, theta = %5.2f\n',i,j, ...
         n_pno_2,n_pno_1,theta);
     end
   end
@@ -83,7 +83,7 @@ end
       Dab_1 = reshape(Dab_ij(:,:,i,j,iter),nvir,nvir);
       Dab_2 = reshape(Dab_ij_new(:,:,i,j,iter),nvir,nvir);
       theta = subspace(Dab_1(:,1:n_pno_1),Dab_2(:,1:n_pno_2))/pi*180;
-      fprintf('  for ij (%d,%d) pair, rank: %2d vs. %2d, theta = %f\n',i,j, ...
+      fprintf('  for ij (%d,%d) pair, rank: %2d vs. %2d, theta = %5.2f\n',i,j, ...
         n_pno_1,n_pno_2,theta);
     end
   end
