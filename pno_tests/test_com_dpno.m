@@ -6,20 +6,23 @@ tic;
 %% calculation information
 tcut = '1e7';
 %% H2O
-mol_name = 'h2o';
-ndocc = 4;
+% mol_name = 'h2o';
+% ndocc = 4;
 % H2O/6-31G calculaton: # of occ: 4, # of vir: 8
 % bs_name = '631g';
 % nvir = 8;
 % H2O/aug-cc-pVDZ calculaton: # of occ: 4, # of vir: 36
-bs_name = 'augdz';
-nvir = 36;
+% bs_name = 'augdz';
+% nvir = 36;
 %% (H2O)2 
-% mol_name = 'h2o_2';
-% ndocc = 8;
+mol_name = 'h2o_2';
+ndocc = 8;
 % % (H2O)2/6-31G calculaton: # of occ: 8, # of vir: 16
 % bs_name = '631g';
 % nvir = 16;
+% % (H2O)2/aug-cc-pVDZ calculaton: # of occ: 8, # of vir: 72
+bs_name = 'augdz';
+nvir = 72;
 
 %% construct PNO coefficients from files
 fprintf('\n constructing PNO coefficients for %s %s with %s\n', ...
