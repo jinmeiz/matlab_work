@@ -4,7 +4,7 @@
 tic;
 
 %% calculation information
-tcut = '1e7';
+tcut = '1e10';
 %% H2O
 % mol_name = 'h2o';
 % ndocc = 4;
