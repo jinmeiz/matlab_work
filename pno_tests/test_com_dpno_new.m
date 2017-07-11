@@ -6,30 +6,29 @@ tic;
 %% calculation information
 tcut = '1e10';
 %% H2O
-% mol_name = 'h2o';
-% ndocc = 4;
+mol_name = 'h2o';
+ndocc = 4;
 % % H2O/6-31G calculaton: # of occ: 4, # of vir: 8
 % % bs_name = '631g';
 % % nvir = 8;
 % H2O/aug-cc-pVDZ calculaton: # of occ: 4, # of vir: 36
-% bs_name = 'augdz';
-% nvir = 36;
+bs_name = 'augdz';
+nvir = 36;
 %% (H2O)2 
-mol_name = 'h2o_2';
-ndocc = 8;
+% mol_name = 'h2o_2';
+% ndocc = 8;
 % % (H2O)2/6-31G calculaton: # of occ: 8, # of vir: 16
 % % bs_name = '631g';
 % % nvir = 16;
 % (H2O)2/aug-cc-pVDZ calculaton: # of occ: 8, # of vir: 72
-bs_name = 'augdz';
-nvir = 72;
+% bs_name = 'augdz';
+% nvir = 72;
 
 %% construct PNO coefficients from files
 fprintf('\n constructing PNO coefficients for %s %s with %s\n', ...
   mol_name,bs_name,tcut);
 
-Dab_ij = zeros(nvir,nvir,ndocc,ndocc,3);
-Dab_ij_new = zeros(nvir,nvir,ndocc,ndocc,3);
+Dab_ij = zeros(nvir,nvir,ndocc,ndocc,6);
 n_pno = zeros(ndocc,ndocc,6);
 
 for iter = 1:6
@@ -39,9 +38,9 @@ for iter = 1:6
       f_name = strcat(strcat(strcat(strcat(strcat('C_es_', ...
                    int2str(i)),int2str(j)),'_'),int2str(iter-1)),'th.out');
       %fprintf('  reading %10s\n',f_name);
-      path_name = strcat(strcat(strcat(strcat(strcat(strcat(strcat('./',mol_name), ...
-      '/'),'bs_'),bs_name),'_'),tcut),'_new');
-      Dab = load([strcat(path_name,'/') f_name]); 
+      path_name = strcat(strcat(strcat(strcat(strcat(strcat('./',mol_name), ...
+      '/'),'bs_'),bs_name),'_'),tcut);
+      Dab = load([strcat(path_name,'/new/') f_name]); 
       n_pno(i,j,iter) = size(Dab,2);
            
       Dab_ij(:,1:n_pno(i,j,iter),i,j,iter) = Dab;  
