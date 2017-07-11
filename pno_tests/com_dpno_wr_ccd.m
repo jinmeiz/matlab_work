@@ -31,7 +31,7 @@ fprintf('\n constructing PNO coefficients for %s %s with %s\n', ...
 Dab_ij = zeros(nvir,nvir,ndocc,ndocc,6);
 n_pno = zeros(ndocc,ndocc,6);
 
-for iter = 1:6
+for iter = 1:7
  
   for i = 1:ndocc  
     for j = 1:i
@@ -111,8 +111,8 @@ end
       
 %% compute the subspace between different PNO coefficients
 idx = 1;
-for iter = 1:6
- fprintf('\n%2d ',idx);
+for iter = 1:7
+ fprintf('\n%2d ',idx-1);
  
   for i = 1:ndocc  
     for j = 1:i
