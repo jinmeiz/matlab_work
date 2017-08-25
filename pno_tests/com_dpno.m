@@ -1,5 +1,5 @@
 %% compare the subspaces between different PNO coefficients
-% there are six different PNO coefficients
+% in each iterations
 % this script stores all the PNO coefficients and rank information
 tic;
 
@@ -8,18 +8,12 @@ tcut = '1e10';
 %% H2O
 mol_name = 'h2o';
 ndocc = 4;
-% % H2O/6-31G calculaton: # of occ: 4, # of vir: 8
-% % bs_name = '631g';
-% % nvir = 8;
 % H2O/aug-cc-pVDZ calculaton: # of occ: 4, # of vir: 36
 bs_name = 'augdz';
 nvir = 36;
 %% (H2O)2 
 % mol_name = 'h2o_2';
 % ndocc = 8;
-% % (H2O)2/6-31G calculaton: # of occ: 8, # of vir: 16
-% % bs_name = '631g';
-% % nvir = 16;
 % (H2O)2/aug-cc-pVDZ calculaton: # of occ: 8, # of vir: 72
 % bs_name = 'augdz';
 % nvir = 72;
@@ -40,7 +34,7 @@ for iter = 1:6
       %fprintf('  reading %10s\n',f_name);
       path_name = strcat(strcat(strcat(strcat(strcat(strcat('./',mol_name), ...
       '/'),'bs_'),bs_name),'_'),tcut);
-      Dab = load([strcat(path_name,'/new/') f_name]); 
+      Dab = load([strcat(path_name,'/pno/') f_name]); 
       n_pno(i,j,iter) = size(Dab,2);
            
       Dab_ij(:,1:n_pno(i,j,iter),i,j,iter) = Dab;  
